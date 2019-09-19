@@ -1,0 +1,77 @@
+<div class="crud-container">
+  <h1>Angular Component Interaction</h1>
+
+  <div class="crud-add__wrap">
+
+    <!--Add List-->
+    <div class="crud-add__list">
+      <h4>Add Data:</h4>
+
+      <form class="example-form width-100">
+
+        <mat-form-field class="example-full-width width-100">
+          <input matInput placeholder="Name" id="name" name="name" [(ngModel)]="model.name" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width width-100">
+          <input matInput placeholder="Designation" id="designation" name="designation" [(ngModel)]="model.designation" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width width-100">
+          <input matInput placeholder="Organization" id="organization" name="organization" [(ngModel)]="model.organization" autocomplete="off">
+        </mat-form-field>
+
+        <button mat-button mat-raised-button color="primary" (click)="addUser()">Add Member</button>
+      </form>
+    </div>
+
+    <br /> <br />
+
+    <!--View List-->
+    <div class="crud-view__list">
+      <h4>List Data:</h4>
+
+      <div class="crud-view__row crud-view__header">
+        <div class="crud-view-inner__list">Name </div>
+        <div class="crud-view-inner__list">Designation </div>
+        <div class="crud-view-inner__list">Organization </div>
+        <div class="crud-view-inner__list crud-btn">Action</div>
+      </div>
+
+      <div class="crud-view__row" *ngFor="let userList of userDetails; let i = index">
+
+        <div class="crud-view-inner__list">
+          <div *ngIf="!userList.isEditable"> {{userList.name}} </div>
+
+          <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
+            <input matInput id="name" name="name" [(ngModel)]="userList.name" />
+          </mat-form-field>
+        </div>
+
+        <div class="crud-view-inner__list">
+          <div *ngIf="!userList.isEditable"> {{userList.designation}} </div>
+
+          <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
+            <input matInput id="designation" name="designation" [(ngModel)]="userList.designation" />
+          </mat-form-field>
+
+        </div>
+
+        <div class="crud-view-inner__list">
+          <div *ngIf="!userList.isEditable"> {{userList.organization}} </div>
+
+          <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
+            <input matInput id="organization" name="organization" [(ngModel)]="userList.organization" />
+          </mat-form-field>
+        </div>
+
+        <div class="crud-view-inner__list crud-btn">
+          <button mat-raised-button class="btn-edit" (click)="editUser(userList,i)" *ngIf="!userList.isEditable">Edit</button>
+          <button mat-raised-button class="btn-edit" (click)="updateUser(userList)" *ngIf="userList.isEditable">Save</button>
+          <button mat-raised-button class="btn-delete" (click)="deleteUser(i)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
