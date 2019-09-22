@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-crud-application',
-  templateUrl: './crud-application.component.html',
-  styleUrls: ['./crud-application.component.css']
+  selector: 'lib-crud-lib',
+  templateUrl: './crud-lib.component.html',
+  styleUrls: ['./crud-lib.component.css'] 
 })
-export class CrudApplicationComponent implements OnInit {
-  
+export class CrudLibComponent implements OnInit {
+
   userDetails: Array<any>;
   model: any = {};
   updatedValue: string | number;
-  constructor() {
 
+  constructor() {
     this.userDetails = [
       { name: 'John Doe', designation: 'Web Designer', organization: 'XYZ' },
       { name: 'Tom Richer', designation: 'Web Developer', organization: 'zzz' },
@@ -33,8 +33,7 @@ export class CrudApplicationComponent implements OnInit {
     }
   }
 
-  editUser(userList, a) {
-    this.updatedValue = a;
+  editUser(userList) {
     userList.isEditable = true;
   }
 

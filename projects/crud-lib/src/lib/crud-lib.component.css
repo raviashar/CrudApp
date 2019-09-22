@@ -1,5 +1,5 @@
 .width-100 { width: 100%;}
-.crud-container { max-width: 980px; margin: 0 50px; }
+.crud-container { max-width: 980px; margin: 0 50px; padding: 20px 0 30px; }
 .crud-add__wrap { margin-top: 50px;}
 .crud-add__list h4 {margin-bottom: 30px;}
 

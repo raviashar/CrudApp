@@ -1,5 +1,5 @@
 <div class="crud-container">
-  <h1>Angular Component Interaction</h1>
+  <h1>Angular Crud Application</h1>
 
   <div class="crud-add__wrap">
 
@@ -66,7 +66,7 @@
         </div>
 
         <div class="crud-view-inner__list crud-btn">
-          <button mat-raised-button class="btn-edit" (click)="editUser(userList,i)" *ngIf="!userList.isEditable">Edit</button>
+          <button mat-raised-button class="btn-edit" (click)="editUser(userList)" *ngIf="!userList.isEditable">Edit</button>
           <button mat-raised-button class="btn-edit" (click)="updateUser(userList)" *ngIf="userList.isEditable">Save</button>
           <button mat-raised-button class="btn-delete" (click)="deleteUser(i)">Delete</button>
         </div>

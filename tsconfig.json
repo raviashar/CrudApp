@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "crud-lib": [
+        "dist/crud-lib"
+      ],
+      "crud-lib/*": [
+        "dist/crud-lib/*"
+      ]
+    }
   }
 }
