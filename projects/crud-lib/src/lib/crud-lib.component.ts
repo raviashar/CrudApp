@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'lib-crud-lib',
   templateUrl: './crud-lib.component.html',
-  styleUrls: ['./crud-lib.component.css'] 
+  styleUrls: ['./crud-lib.component.css']
 })
 export class CrudLibComponent implements OnInit {
 
   userDetails: Array<any>;
   model: any = {};
-  updatedValue: string | number;
+  useOldData: any;
 
   constructor() {
     this.userDetails = [
@@ -33,11 +33,17 @@ export class CrudLibComponent implements OnInit {
     }
   }
 
-  editUser(userList) {
+  editUser(userList, userIndex): void {
+    this.useOldData = Object.assign({}, this.userDetails[userIndex]);
     userList.isEditable = true;
   }
 
-  updateUser(userList) {
+  updateUser(userList): void {
+    userList.isEditable = false;
+  }
+
+  cancelUser(userList, userIndex) {
+    this.userDetails[userIndex] = this.useOldData;
     userList.isEditable = false;
   }
 

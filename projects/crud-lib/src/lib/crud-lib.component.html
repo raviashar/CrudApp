@@ -7,21 +7,24 @@
     <div class="crud-add__list">
       <h4>Add Data:</h4>
 
-      <form class="example-form width-100">
+      <form #userForm="ngForm" class="example-form width-100" novalidate>
 
         <mat-form-field class="example-full-width width-100">
-          <input matInput placeholder="Name" id="name" name="name" [(ngModel)]="model.name" autocomplete="off">
+          <input matInput required #name="ngModel" placeholder="Name" name="name" [(ngModel)]="model.name" autocomplete="off">
+          <mat-error *ngIf="name.errors?.required && (name.touched || name.dirty)">This Field is Required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width width-100">
-          <input matInput placeholder="Designation" id="designation" name="designation" [(ngModel)]="model.designation" autocomplete="off">
+          <input matInput required #designation="ngModel" placeholder="Designation" name="designation" [(ngModel)]="model.designation" autocomplete="off">
+          <mat-error *ngIf="designation.errors?.required">This Field is Required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width width-100">
-          <input matInput placeholder="Organization" id="organization" name="organization" [(ngModel)]="model.organization" autocomplete="off">
+          <input matInput required #organization="ngModel" placeholder="Organization" name="organization" [(ngModel)]="model.organization" autocomplete="off">
+          <mat-error *ngIf="organization.errors?.required && (organization.touched || organization.dirty)">This Field is Required</mat-error>
         </mat-form-field>
 
-        <button mat-button mat-raised-button color="primary" (click)="addUser()">Add Member</button>
+        <button mat-button mat-raised-button color="primary" (click)="addUser()" [disabled]="!userForm.valid">Add Member</button>
       </form>
     </div>
 
@@ -66,9 +69,10 @@
         </div>
 
         <div class="crud-view-inner__list crud-btn">
-          <button mat-raised-button class="btn-edit" (click)="editUser(userList)" *ngIf="!userList.isEditable">Edit</button>
+          <button mat-raised-button class="btn-edit" (click)="editUser(userList, i)" *ngIf="!userList.isEditable">Edit</button>
+          <button mat-raised-button class="btn-delete" (click)="deleteUser(i)" *ngIf="!userList.isEditable">Delete</button>
           <button mat-raised-button class="btn-edit" (click)="updateUser(userList)" *ngIf="userList.isEditable">Save</button>
-          <button mat-raised-button class="btn-delete" (click)="deleteUser(i)">Delete</button>
+          <button mat-raised-button class="btn-delete" (click)="cancelUser(userList, i)" *ngIf="userList.isEditable">Cancel</button>
         </div>
       </div>
     </div>
