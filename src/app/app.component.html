@@ -1,1 +1,30 @@
-<lib-crud-lib></lib-crud-lib>
+<header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button class="toggle-btn" mat-icon-button (click)="sideNavigation.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <div class="toolbar-nav">
+        <a mat-raised-button routerLink="/Employees" routerLinkActive="active">Empolyee List</a>
+        <a mat-raised-button routerLink="/Charts" routerLinkActive="active">Charts</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" #sideNavigation>
+      <mat-nav-list>
+        <div class="side-bav">
+          <a mat-button routerLink="/Employees" routerLinkActive="active">Empolyee List</a>
+          <a mat-button routerLink="/Charts" routerLinkActive="active">Charts</a>
+        </div>
+        
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="backdrop" *ngIf="sideNavigation.opened"></div>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</header>

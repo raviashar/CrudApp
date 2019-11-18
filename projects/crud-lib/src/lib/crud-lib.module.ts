@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { AngularMaterialModule } from '../../../../src/app/shared/angular-material.module';
 import { CrudLibComponent } from './crud-lib.component';
+import { CrudTitlePipe } from './pipe/crud-title.pipe';
 
 @NgModule({
   declarations: [
-    CrudLibComponent
+    CrudLibComponent,
+    CrudTitlePipe
   ],
   imports: [
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
+    AngularMaterialModule
   ],
   exports: [CrudLibComponent],
   bootstrap: [CrudLibComponent],

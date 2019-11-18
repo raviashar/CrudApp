@@ -1,5 +1,5 @@
 .width-100 { width: 100%;}
-.crud-container { max-width: 980px; margin: 0 50px; padding: 20px 0 30px; }
+.crud-container { margin: 0 50px; padding: 20px 0 30px; }
 .crud-add__wrap { margin-top: 50px;}
 .crud-add__list h4 {margin-bottom: 30px;}
 
@@ -14,5 +14,5 @@
 .crud-btn > button:first-child { margin-right: 10px; }
 .btn-edit { background: #66bb4a; color: #FFFFFF; }
 .btn-delete { background: #dc5e5e; color: #FFFFFF; }
-
+.search-filter .example-full-width { min-width: 320px; }
 

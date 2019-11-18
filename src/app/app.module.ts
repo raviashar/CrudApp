@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { CrudLibModule } from '../../projects/crud-lib/src/lib/crud-lib.module';
+import { ChartModule } from './chart/chart.module';
+import { EmployeeListModule } from './employee-list/employee-list.module';
+import { appRouting } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { CrudLibModule } from '../../projects/crud-lib/src/lib/crud-lib.module';
   imports: [
     BrowserModule,
     SharedModule,
-    CrudLibModule,
+    ChartModule,
+    EmployeeListModule,
+    appRouting
   ],
   providers: [],
   bootstrap: [AppComponent]

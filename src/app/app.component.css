@@ -1,0 +1,12 @@
+.toolbar-nav { display: none; }
+.toolbar-nav a { margin: 0 10px; }
+.toolbar-nav a.active { background-color: #E8E8E8; }
+.side-bav a { display: block; text-align: left; min-width: 200px; }
+.side-bav a:hover .mat-button-focus-overlay, .side-bav a.active { background-color: #E8E8E8 !important; border-radius: 0; opacity: 1 !important; }
+.backdrop { background: rgba(0,0,0,0.4); position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
+mat-sidenav-content.mat-drawer-content.mat-sidenav-content { margin-left: 0 !important; }
+
+@media only screen and (min-width: 992px) {
+  .toggle-btn { display: none }
+  .toolbar-nav { display: block; }
+}

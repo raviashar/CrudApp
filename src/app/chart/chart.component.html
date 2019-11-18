@@ -1,0 +1,15 @@
+<div class="container">
+  <a mat-raised-button (click)="downloadCanvas('png', $event)">Download PNG</a>
+  <a mat-raised-button (click)="downloadCanvas('pdf')">Download PDF</a>
+  <div class="" style="background: #FFFFFF;">
+    <canvas id="abc" baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabel"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            [colors]="barChartColors"
+            [plugins]="barChartPlugins"></canvas>
+  </div>
+
+</div>

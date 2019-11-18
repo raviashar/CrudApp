@@ -15,6 +15,11 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width width-100">
+          <input matInput required #gender="ngModel" placeholder="Gender" name="gender" [(ngModel)]="model.gender" autocomplete="off">
+          <mat-error *ngIf="gender.errors?.required && (gender.touched || gender.dirty)">This Field is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width width-100">
           <input matInput required #designation="ngModel" placeholder="Designation" name="designation" [(ngModel)]="model.designation" autocomplete="off">
           <mat-error *ngIf="designation.errors?.required">This Field is Required</mat-error>
         </mat-form-field>
@@ -22,6 +27,17 @@
         <mat-form-field class="example-full-width width-100">
           <input matInput required #organization="ngModel" placeholder="Organization" name="organization" [(ngModel)]="model.organization" autocomplete="off">
           <mat-error *ngIf="organization.errors?.required && (organization.touched || organization.dirty)">This Field is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width width-100">
+          <input matInput required #salary="ngModel" placeholder="Salary" name="salary" [(ngModel)]="model.salary" autocomplete="off">
+          <mat-error *ngIf="salary.errors?.required && (salary.touched || salary.dirty)">This Field is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width width-100">
+          <input matInput required #birthday="ngModel" [matDatepicker]="picker" placeholder="Choose a date" name="birthday" [(ngModel)]="model.birthday">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <button mat-button mat-raised-button color="primary" (click)="addUser()" [disabled]="!userForm.valid">Add Member</button>
@@ -33,21 +49,38 @@
     <!--View List-->
     <div class="crud-view__list">
       <h4>List Data:</h4>
+      <div class="search-filter">
+        <mat-form-field class="example-full-width">
+          <input matInput required #search="ngModel" placeholder="Search" name="search" [(ngModel)]="model.search" autocomplete="off">
+        </mat-form-field>
+      </div>
 
       <div class="crud-view__row crud-view__header">
         <div class="crud-view-inner__list">Name </div>
+        <div class="crud-view-inner__list">Gender </div>
         <div class="crud-view-inner__list">Designation </div>
         <div class="crud-view-inner__list">Organization </div>
+        <div class="crud-view-inner__list">Annual Salary</div>
+        <div class="crud-view-inner__list">Birth Date</div>
         <div class="crud-view-inner__list crud-btn">Action</div>
+
       </div>
 
       <div class="crud-view__row" *ngFor="let userList of userDetails; let i = index">
 
         <div class="crud-view-inner__list">
-          <div *ngIf="!userList.isEditable"> {{userList.name}} </div>
+          <div *ngIf="!userList.isEditable"> {{userList.name | uppercase}} </div>
 
           <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
             <input matInput id="name" name="name" [(ngModel)]="userList.name" />
+          </mat-form-field>
+        </div>
+
+        <div class="crud-view-inner__list">
+          <div *ngIf="!userList.isEditable"> {{userList.gender | uppercase}} </div>
+
+          <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
+            <input matInput id="gender" name="gender" [(ngModel)]="userList.gender" />
           </mat-form-field>
         </div>
 
@@ -65,6 +98,24 @@
 
           <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
             <input matInput id="organization" name="organization" [(ngModel)]="userList.organization" />
+          </mat-form-field>
+        </div>
+
+        <div class="crud-view-inner__list">
+          <div *ngIf="!userList.isEditable"> {{userList.salary | currency:'INR':true:'1.0-0'}} </div>
+
+          <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
+            <input matInput id="salary" name="salary" [(ngModel)]="userList.salary" />
+          </mat-form-field>
+        </div>
+
+        <div class="crud-view-inner__list">
+          <div *ngIf="!userList.isEditable"> {{userList.birthday | date:'dd/MM/y'}} </div>
+
+          <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
+            <input matInput id="birthday" [matDatepicker]="picker" name="birthday" [(ngModel)]="userList.birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
 
