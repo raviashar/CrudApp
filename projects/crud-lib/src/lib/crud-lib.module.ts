@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../../../../src/app/shared/angular-material.module';
 import { CrudLibComponent } from './crud-lib.component';
 import { CrudTitlePipe } from './pipe/crud-title.pipe';
+import { CrudSeachFilterPipe } from './pipe/crud-search-filter.pipe';
 
 @NgModule({
   declarations: [
     CrudLibComponent,
-    CrudTitlePipe
+    CrudTitlePipe,
+    CrudSeachFilterPipe
   ],
   imports: [
     CommonModule,

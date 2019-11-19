@@ -6,7 +6,8 @@
 .crud-view__list h4 { margin-bottom: 30px;}
 .crud-view__row { display: flex; display: -ms-flexbox; flex-wrap: wrap; align-items: center; justify-content: center; border: 1px solid #292929; height: auto; padding: 10px 15px;}
 .crud-view__row:not(:last-child) { border-bottom: 0px;}
-.crud-view__header { background: #ffffff; font-weight: 500;}
+.crud-view-header { background: #ffffff; font-weight: 500;}
+.crud-view-body .crud-view__row:first-child { border-top: 0px;}
 .crud-view-inner__list { flex: 1; margin-right: 20px; }
 .crud-view-inner__list:last-child { margin-right: 0; }
 
