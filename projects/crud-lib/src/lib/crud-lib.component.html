@@ -56,10 +56,14 @@
       <h4>List Data:</h4>
       <div class="search-filter">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Search" name="search" [(ngModel)]="searchData" autocomplete="off">
+          <input matInput placeholder="Search" name="search" [(ngModel)]="searchData" (ngModelChange)="changeSearchData()" autocomplete="off">
         </mat-form-field>
+        {{getSearchString}}
 
-        <button mat-raised-button (click)="changeDesignation()">Change Designation</button>
+        <div class="example-full-width">
+          <button mat-raised-button (click)="changeDesignation()">Change Designation</button>
+        </div>
+        <br />
       </div>
 
       <div class="crud-view-header">
@@ -74,11 +78,12 @@
         </div>
       </div>
 
-      <ng-container *ngIf="(userDetails | employeeSearchFilter:searchData) as filterResult">
+      <!--<ng-container *ngIf="(userDetails | employeeSearchFilter:searchData) as filterResult" ></ng-container>-->
+      <ng-container *ngIf="(filterUserDetails) as filterResult">
         <div *ngIf="filterResult.length === 0" class="text-center ">No Result Found.</div>
-
+        
         <div class="crud-view-body">
-          <div class="crud-view__row" *ngFor="let userList of filterResult ; let i = index">
+          <div class="crud-view__row" *ngFor="let userList of filterResult ; let i = index" (mousemove)="mouseMoveFn()">
             <div class="crud-view-inner__list">
               <div *ngIf="!userList.isEditable"> {{userList.name | employeeNameTitle: userList.gender}} </div>
 
@@ -101,7 +106,7 @@
             </div>-->
 
             <div class="crud-view-inner__list">
-              <div *ngIf="!userList.isEditable"> {{userList.designation }} </div>
+              <div *ngIf="!userList.isEditable"> {{userList.designation | titlecase }} </div>
 
               <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
                 <input matInput id="designation" name="designation" [(ngModel)]="userList.designation" />

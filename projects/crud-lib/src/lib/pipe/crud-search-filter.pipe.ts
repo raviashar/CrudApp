@@ -9,7 +9,6 @@ import { EmployeeList } from '../crud-lib.model';
 export class CrudSeachFilterPipe implements PipeTransform {
 
   transform(userDetails: EmployeeList[], searchData: string): EmployeeList[] {
-    console.log('search pipe');
     if (!userDetails || !searchData) {
       return userDetails;
     }
