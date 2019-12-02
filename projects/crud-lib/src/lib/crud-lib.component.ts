@@ -25,7 +25,7 @@ export class CrudLibComponent implements OnInit {
 
   ngOnInit() {
     this.gender();
-    this.generateUserDetails();
+    //this.generateUserDetails();
     this.filterUserDetails = this.userDetails;
   }
 
@@ -97,16 +97,16 @@ export class CrudLibComponent implements OnInit {
     userList.isEditable = false;
   }
 
-  generateUserDetails() {
-    this.userDetails = [
-      { name: 'John Doe', gender: 1, designation: 'Web Designer', organization: 'Design Infotech', salary: 250000, birthday: '12/21/1994' },
-      { name: 'Tom Richer', gender: 1, designation: 'Web Developer', organization: 'Developing Infotech', salary: 350000, birthday: '12/25/1995' },
-      { name: 'Tim Southy', gender: 1, designation: 'Manager', organization: 'Management Organization', salary: 450000, birthday: '9/26/1964' },
-      { name: 'Mary Richard', gender: 2, designation: 'Web Designer', organization: 'Design Infotech', salary: 350000, birthday: '1/2/1880' },
-      { name: 'Jenny Joseph', gender: 2, designation: 'Ux Designer', organization: 'Design Infotech', salary: 450000, birthday: '10/15/1990' },
-      { name: 'Jackson Vandam', gender: 1, designation: 'Web Developer', organization: 'Developing Infotech', salary: 275000, birthday: '12/25/1980' },
-      { name: 'Micky John', gender: 2, designation: 'Assist. Manager', organization: 'Management Organization', salary: 550000, birthday: '9/4/1974' }
-    ];
-  }
+  //generateUserDetails() {
+  //  this.userDetails = [
+  //    { name: 'John Doe', gender: 1, designation: 'Web Designer', organization: 'Design Infotech', salary: 250000, birthday: '12/21/1994' },
+  //    { name: 'Tom Richer', gender: 1, designation: 'Web Developer', organization: 'Developing Infotech', salary: 350000, birthday: '12/25/1995' },
+  //    { name: 'Tim Southy', gender: 1, designation: 'Manager', organization: 'Management Organization', salary: 450000, birthday: '9/26/1964' },
+  //    { name: 'Mary Richard', gender: 2, designation: 'Web Designer', organization: 'Design Infotech', salary: 350000, birthday: '1/2/1880' },
+  //    { name: 'Jenny Joseph', gender: 2, designation: 'Ux Designer', organization: 'Design Infotech', salary: 450000, birthday: '10/15/1990' },
+  //    { name: 'Jackson Vandam', gender: 1, designation: 'Web Developer', organization: 'Developing Infotech', salary: 275000, birthday: '12/25/1980' },
+  //    { name: 'Micky John', gender: 2, designation: 'Assist. Manager', organization: 'Management Organization', salary: 550000, birthday: '9/4/1974' }
+  //  ];
+  //}
 
 }

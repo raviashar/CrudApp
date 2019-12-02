@@ -34,15 +34,16 @@
           <mat-error *ngIf="organization.errors?.required && (organization.touched || organization.dirty)">This Field is Required</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width width-100">
+        <!--<mat-form-field class="example-full-width width-100">
           <input matInput required #salary="ngModel" placeholder="Salary" name="salary" [(ngModel)]="model.salary" autocomplete="off">
           <mat-error *ngIf="salary.errors?.required && (salary.touched || salary.dirty)">This Field is Required</mat-error>
-        </mat-form-field>
+        </mat-form-field>-->
 
         <mat-form-field class="example-full-width width-100">
-          <input matInput required #birthday="ngModel" [matDatepicker]="picker" placeholder="Choose a date" name="birthday" [(ngModel)]="model.birthday">
+          <input matInput required #birthday="ngModel" [matDatepicker]="picker" placeholder="Joining Date" name="birthday" [(ngModel)]="model.birthday">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="birthday.errors?.required && (birthday.touched || birthday.dirty)">This Field is Required</mat-error>
         </mat-form-field>
 
         <button mat-button mat-raised-button color="primary" (click)="addUser()" [disabled]="!userForm.valid">Add Member</button>
@@ -51,18 +52,20 @@
 
     <br /> <br />
 
-    <!--View List-->
+    <!--=======Employee Listing View=======-->
     <div class="crud-view__list">
       <h4>List Data:</h4>
+
+      <!--Search Filter-->
       <div class="search-filter">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Search" name="search" [(ngModel)]="searchData" (ngModelChange)="changeSearchData()" autocomplete="off">
         </mat-form-field>
-        {{getSearchString}}
+        <!--{{getSearchString}}-->
 
-        <div class="example-full-width">
-          <button mat-raised-button (click)="changeDesignation()">Change Designation</button>
-        </div>
+        <!--<div class="example-full-width">
+          <button mat-raised-button (click)="changeDesignation()">Change</button>
+        </div>-->
         <br />
       </div>
 
@@ -72,16 +75,17 @@
           <!--<div class="crud-view-inner__list">Gender </div>-->
           <div class="crud-view-inner__list">Designation </div>
           <div class="crud-view-inner__list">Organization </div>
-          <div class="crud-view-inner__list">Annual Salary</div>
+          <!--<div class="crud-view-inner__list">Annual Salary</div>-->
           <div class="crud-view-inner__list">Birth Date</div>
           <div class="crud-view-inner__list crud-btn">Action</div>
         </div>
       </div>
 
       <!--<ng-container *ngIf="(userDetails | employeeSearchFilter:searchData) as filterResult" ></ng-container>-->
-      <ng-container *ngIf="(filterUserDetails) as filterResult">
-        <div *ngIf="filterResult.length === 0" class="text-center ">No Result Found.</div>
-        
+      <ng-container *ngIf="filterUserDetails as filterResult">
+        <div *ngIf="filterResult.length === 0 && userDetails.length > 0" class="text-center ">No Result Found.</div>
+        <div *ngIf="filterResult.length === 0 && userDetails.length === 0" class="text-center ">No data inserted in to the table.</div>
+
         <div class="crud-view-body">
           <div class="crud-view__row" *ngFor="let userList of filterResult ; let i = index" (mousemove)="mouseMoveFn()">
             <div class="crud-view-inner__list">
@@ -93,17 +97,17 @@
             </div>
 
             <!--<div class="crud-view-inner__list">
-              <div *ngIf="!userList.isEditable"> {{userList.gender}} </div>
+            <div *ngIf="!userList.isEditable"> {{userList.gender}} </div>
 
-              <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
-                <input matInput id="gender" name="gender" [(ngModel)]="userList.gender" />
-              </mat-form-field>
-              <mat-select required #gender="ngModel" [(ngModel)]="userList.gender" name="gender">
-                <mat-option *ngFor="let gender of genderArray" [value]="gender.value">
-                  {{userList.gender}}
-                </mat-option>
-              </mat-select>
-            </div>-->
+            <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
+              <input matInput id="gender" name="gender" [(ngModel)]="userList.gender" />
+            </mat-form-field>
+            <mat-select required #gender="ngModel" [(ngModel)]="userList.gender" name="gender">
+              <mat-option *ngFor="let gender of genderArray" [value]="gender.value">
+                {{userList.gender}}
+              </mat-option>
+            </mat-select>
+          </div>-->
 
             <div class="crud-view-inner__list">
               <div *ngIf="!userList.isEditable"> {{userList.designation | titlecase }} </div>
@@ -122,13 +126,13 @@
               </mat-form-field>
             </div>
 
-            <div class="crud-view-inner__list">
+            <!--<div class="crud-view-inner__list">
               <div *ngIf="!userList.isEditable"> {{userList.salary | currency:'INR':true:'1.0-0'}} </div>
 
               <mat-form-field class="example-full-width width-100" *ngIf="userList.isEditable">
                 <input matInput id="salary" name="salary" [(ngModel)]="userList.salary" />
               </mat-form-field>
-            </div>
+            </div>-->
 
             <div class="crud-view-inner__list">
               <div *ngIf="!userList.isEditable"> {{userList.birthday | date:'dd/MM/y'}} </div>
